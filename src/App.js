@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import AddUser from './AddUser.js';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import AddUser from "./AddUser.js";
+import logo from "./logo.svg";
+import "./App.css";
 
 /*
 This exercise will help you put together and practice all of the concepts you've
@@ -12,12 +12,13 @@ The instructions for this project are located in the `instructions.md` file.
 */
 
 class App extends Component {
-  state={
-	users: []  
+  state = {
+    users: []
   };
 
-  addUser = (user) => {
-  	this.setState((currentState) => ({
+  addUser = user => {
+    user.numGamesPlayed = 0;
+    this.setState(currentState => ({
       users: [...currentState.users, user]
     }));
   };
@@ -29,7 +30,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
-        <AddUser add={this.addUser} />
+        <AddUser onAddUser={this.addUser} users={this.state.users} />
       </div>
     );
   }
