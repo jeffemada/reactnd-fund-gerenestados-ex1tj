@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AddUser from "./AddUser.js";
+import ListUser from "./ListUser.js";
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -17,7 +18,7 @@ class App extends Component {
   };
 
   addUser = user => {
-    user.numGamesPlayed = 0;
+    user.numGamesPlayed = Math.round(Math.random() * 10);
     this.setState(currentState => ({
       users: [...currentState.users, user]
     }));
@@ -31,6 +32,7 @@ class App extends Component {
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
         <AddUser onAddUser={this.addUser} users={this.state.users} />
+        <ListUser users={this.state.users} />
       </div>
     );
   }
